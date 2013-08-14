@@ -1,0 +1,67 @@
+.\Copyright (c) 1995 Merit Network, Inc.
+.\Author: Craig Labovitz (labovit@merit.edu)
+.\route_atob (Route ASCII to Binary) manual page
+.TH route_atob 1 "May 1996"
+.UC 6
+.SH NAME
+route_atob \- Route ASCII to binary 
+.SH SYNOPSIS
+.B route_atob
+[-i ascii_data_file] [-o data_out_file] 
+
+
+.SH DESCRIPTION
+`\|\fBroute_atob\fP\|' converts ASCII descriptions of Merit Routing Toolkit (MRT) messages to binary MRT messages for use with other toolkit programs.
+
+.SH OPTIONS
+.TP 1i
+.B \-i 
+Name of the file containing ASCII descrption of MRT messages. An argument 'stdin' will read from standard input.
+.TP 1i
+.B \-o 
+Name of binary output file. An argument of 'stdout' will write to standard output 
+.ft I
+(this is the default).
+.ft R
+
+.SH Grammer
+[TIME: mm/dd/yy hh:mm:ss:]
+.br
+TYPE: BGP/UPDATE
+.br
+[FROM: AS ip_address]
+.br
+[WITHDRAW | ANNOUNCE]
+.br
+
+.SH EXAMPLE
+> more ascii_file
+.sp1
+TIME: 01/24/95 16:27:46 
+.br
+TYPE: BGP/UPDATE
+.br
+ASPATH: 185 
+.br
+ORIGIN: IGP  
+.br 
+NEXT_HOP: 198.108.60.1/32
+.br 
+LOCAL_PREF: 0
+.br 
+MULTIEXIT: 0
+.br 
+ANNOUNCE:
+.br
+ 0/0            
+.sp1
+> route_btoa -i ascii_file -o binary_output_file
+
+.SH "SEE ALSO"
+route_btoa(1), mrt(1), sbgp(1), bgp(1), mrt_io(3)
+
+.SH BUGS
+Lots -- this is an ALPHA release after all!
+
+.SH AUTHOR
+Craig Labovitz, Merit Network, Inc.

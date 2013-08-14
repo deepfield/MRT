@@ -1,0 +1,27 @@
+.\"$Id: mrtd.8,v 1.1.1.1 2000/08/14 18:46:14 labovit Exp $
+.\"Copyright (c) 1996 Merit Network, Inc.
+.\"Author: Craig Labovitz (labovit@merit.edu) Masaki Hirabaru (masaki@merit.edu)
+.\"MRT Program Manual Page
+.TH mrtd 8
+.SH NAME
+mrtd - Multi-threaded Routing Toolkit Daemon
+.SH SYNOPSIS
+mrtd [-f config_file] [-p uii_port ] [-v] [-n]
+.SH DESCRIPTION
+mrtd currently supports BGP, RIP, and RIPng. You can connect mrtd by using 
+telnet and examine its status.
+.PP
+The command-line options are:
+.IP -f
+Use an alternate config file. By default, 
+mrtd uses /etc/mrtd.conf .
+.IP -p
+Use alternate uii port number instead of 5674 or "mrt" in /etc/services.
+.IP -v
+Indicates that all debug options will be on.
+.IP -n
+Specifies that mrtd will not modify the kernel's
+routing table.
+.SH AUTHORS
+Craig Labovitz and
+Masaki Hirabaru, Merit Network, Inc.

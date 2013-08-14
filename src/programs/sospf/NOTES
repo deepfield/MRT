@@ -1,0 +1,168 @@
+     ANNEX B - CHECKSUM ALGORITHMS
+ 
+     (This annex is provided for information for implementors  and  is
+     not an integral part of the body of the standard.)
+ 
+ 
+ 
+     B.1  SYMBOLS
+ 
+     The following symbols are used:
+ 
+        C0  variables used in the algorithms
+        C1
+ 
+        i   number (i.e. position) of an octet within  the  TPDU  (see
+            12.1)
+ 
+        n   number (i.e. position) of the first octet of the  checksum
+            parameter
+ 
+        L   length of the complete TPDU
+ 
+        X   value of the first octet of the checksum parameter
+ 
+        Y   value of the second octet of the checksum parameter.
+ 
+ 
+ 
+     B.2  ARITHMETIC CONVENTIONS
+ 
+     Addition is performed in one of the two following modes:
+ 
+        a)  modulo 255 arithmetic;
+ 
+        b)  one's  complement  arithmetic  in  which  if  any  of  the
+            variables  has the value minus zero (i.e. 255) it shall be
+            regarded as though it was plus zero (i.e. 0).
+ 
+ 
+ 
+     B.3  ALGORITHM FOR GENERATING CHECKSUM PARAMETERS
+ 
+ 
+ 
+ 
+ 
+                                    151
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     B.3.1  Set up the complete TPDU with the value  of  the  checksum
+     parameter field set to zero.
+ 
+ 
+     B.3.2  Initialize C0 and C1 to zero.
+ 
+ 
+ 
+     B.3.3  Process each octet sequentially from i = 1 to L by:
+ 
+        a)  adding the value of the octet to C0; then
+ 
+        b)  adding the value of C0 to C1.
+ 
+ 
+ 
+     B.3.4  Calculate X and Y such that
+ 
+        X = -C1 + (L-n).CO
+        Y =  C1 - (L-n+1).C0
+ 
+ 
+ 
+     B.3.5  Place the values  X  and  Y  in  octets  n  and  (n  +  1)
+     respectively.
+ 
+     [A Note describing the above algorithm in  mathematical  notation
+     has been omitted from this copy.]
+ 
+ 
+ 
+     B.4  ALGORITHM FOR CHECKING CHECKSUM PARAMETERS
+ 
+ 
+     B.4.1  Initialize C0 and C1 to zero.
+ 
+ 
+     B.4.2  Process each octet of the TPDU sequentially from i = 1  to
+     L by:
+ 
+        a)  adding the value of the octet to C0; then
+ 
+        b)  adding the value of C0 to C1.
+ 
+ 
+ 
+                                    152
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     B.4.3  If, when all the octets have  been  processed,  either  or
+     both  of  C0  and  C1  does not have the value zero, the checksum
+     formulas in 6.17 have not been satisfied.
+ 
+     NOTE - The nature of  the  algorithm  is  such  that  it  is  not
+     necessary to compare explicitly the stored checksum bytes.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                    153
+ 
+ 
+
+ 
+ 

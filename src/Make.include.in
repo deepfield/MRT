@@ -1,0 +1,52 @@
+#
+# $Id: Make.include.in,v 1.1.1.1 2000/08/14 18:46:09 labovit Exp $
+#
+
+@SET_MAKE@
+HOST_OS =	@HOST_OS@
+
+PROGRAM_DIRS=	@PROGRAM_DIRS@
+PROGRAMS=	@PROGRAM_DIRS@
+LIB_DIRS=	@LIB_DIRS@
+# the following a list that I currently support -- masaki
+PROGRAM_DIRS_MRT = mrtd route_atob route_btoa bgpsim sbgp
+
+EXTRA_LIBS=	@EXTRA_LIBS@
+THREADLIBS=	@THREADLIBS@
+KERNEL_OBJS=	@KERNEL_OBJS@
+KVM_LIB=	@KVM_LIB@
+DB_LIB=		@DB_LIB@
+DATADSTL_LIBS=  @DATADSTL_LIBS@
+
+CC= 		@CC@
+CFLAGS= 	@CFLAGS@ @DEFS@ @MODULES@ $(CPPFLAGS)
+CPPFLAGS= 	@CPPFLAGS@ @EXTRA_INCLUDE_DIRS@
+
+LD= 		@CC@
+LDFLAGS=	@LDFLAGS@
+RANLIB= 	@RANLIB@
+INSTALL= 	@INSTALL@
+MAKEDEP= 	@MAKEDEP@
+MAKEDEPCLEAN= 	@MAKEDEPCLEAN@
+
+DESTDIR=	@prefix@/sbin
+MANDIR=		@prefix@/man
+#EXEC_PREFIX=	@exec_prefix@
+
+MRTLIB= 	../../lib/libmrt.a
+RIBLIB= 	../../lib/librib.a
+RIPLIB= 	../../lib/librip.a
+BGPLIB= 	../../lib/libbgp.a
+PIMLIB= 	../../lib/libpim.a
+CFGLIB=		../../lib/libcfg.a
+MRT_LIBS=	$(CFGLIB) $(BGPLIB) $(RIPLIB) $(PIMLIB) $(RIBLIB) $(MRTLIB)
+SYS_LIBS=	@LIBS@
+LIBS=		$(MRT_LIBS) $(EXTRA_LIBS) $(SYS_LIBS)
+
+QUANTIFY=	@QUANTIFY@
+PURIFY=		@PURIFY@
+
+SHELL = 	/bin/sh
+CP =		cp -p
+RM =		rm -f
+ARFLAGS =	crv

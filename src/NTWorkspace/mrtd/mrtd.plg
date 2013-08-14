@@ -1,0 +1,213 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mrtd - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\labovit\LOCALS~1\Temp\RSP55.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /I "../../include" /I "F:/IPv6Kit/in" /I "F:\Platform SDK\Include" /I "H:\Platform SDK\Include" /I "F:\NTDDK\inc" /I "H:\NTDDK\inc" /I "C:\IPv6Kit\inc" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "NT" /FR"Debug/" /Fp"Debug/mrtd.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\labovit\LOCALS~1\Temp\RSP55.tmp" 
+Creating temporary file "C:\DOCUME~1\labovit\LOCALS~1\Temp\RSP56.tmp" with contents
+[
+wship6.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib iphlpapi.lib /incremental:yes /pdb:"Debug/mrtd.pdb" /debug /machine:IX86 /out:"Debug/mrtd.exe" /libpath:"f:\IPv6kit/lib" /libpath:"F:\Platform SDK\Lib" /libpath:"C:\IPv6Kit\lib" 
+".\Debug\alist.obj"
+".\Debug\array.obj"
+".\Debug\as_alist.obj"
+".\Debug\as_regexp.obj"
+".\Debug\aspath.obj"
+".\Debug\bgp_attr.obj"
+".\Debug\bgp_dump.obj"
+".\Debug\bgp_dump2.obj"
+".\Debug\bgp_msg.obj"
+".\Debug\bgp_pdu.obj"
+".\Debug\bgp_sm.obj"
+".\Debug\bgp_thread.obj"
+".\Debug\bgp_timer.obj"
+".\Debug\bgp_util.obj"
+".\Debug\bgpconf.obj"
+".\Debug\buffer.obj"
+".\Debug\commconf.obj"
+".\Debug\common.obj"
+".\Debug\community.obj"
+".\Debug\compat.obj"
+".\Debug\config_file.obj"
+".\Debug\connect.obj"
+".\Debug\filter.obj"
+".\Debug\gateway.obj"
+".\Debug\hash.obj"
+".\Debug\hashfn.obj"
+".\Debug\io.obj"
+".\Debug\kernel_uii.obj"
+".\Debug\link_state.obj"
+".\Debug\linked_list.obj"
+".\Debug\load.obj"
+".\Debug\lsa_database.obj"
+".\Debug\mrt.obj"
+".\Debug\mrtd.obj"
+".\Debug\multiconf.obj"
+".\Debug\New.obj"
+".\Debug\nexthop.obj"
+".\Debug\nt.obj"
+".\Debug\nt_alarm.obj"
+".\Debug\ospf_config.obj"
+".\Debug\ospf_database.obj"
+".\Debug\ospf_hello.obj"
+".\Debug\ospf_interface.obj"
+".\Debug\ospf_neighbor.obj"
+".\Debug\ospf_netmap.obj"
+".\Debug\ospf_packet.obj"
+".\Debug\ospf_thread.obj"
+".\Debug\ospf_uii.obj"
+".\Debug\prefix.obj"
+".\Debug\radix.obj"
+".\Debug\reboot.obj"
+".\Debug\rib.obj"
+".\Debug\rib_uii.obj"
+".\Debug\rip2.obj"
+".\Debug\rip_proto.obj"
+".\Debug\ripconf.obj"
+".\Debug\ripng.obj"
+".\Debug\route_util.obj"
+".\Debug\rtmapconf.obj"
+".\Debug\schedule.obj"
+".\Debug\select.obj"
+".\Debug\signal.obj"
+".\Debug\socket.obj"
+".\Debug\stack.obj"
+".\Debug\timer.obj"
+".\Debug\trace.obj"
+".\Debug\user.obj"
+".\Debug\user_old.obj"
+".\Debug\user_util.obj"
+".\Debug\util.obj"
+".\Debug\vars.obj"
+".\Debug\view.obj"
+".\Debug\Script1.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\labovit\LOCALS~1\Temp\RSP56.tmp"
+<h3>Output Window</h3>
+Compiling...
+bgpconf.c
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(204) : warning C4013: 'inet_ntop' undefined; assuming extern returning int
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(298) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(298) : warning C4133: '==' : incompatible types - from 'struct _prefix_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(298) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(352) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(352) : warning C4133: '==' : incompatible types - from 'struct _prefix_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(352) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(370) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(370) : warning C4133: '==' : incompatible types - from 'struct _bgp_peer_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(370) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(402) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_local_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(402) : warning C4133: '==' : incompatible types - from 'struct _bgp_local_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(402) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_local_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(454) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(454) : warning C4133: '==' : incompatible types - from 'struct _bgp_peer_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(454) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(462) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(462) : warning C4133: '==' : incompatible types - from 'struct _bgp_peer_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(462) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(468) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(468) : warning C4133: '==' : incompatible types - from 'struct _prefix_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(468) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(649) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(649) : warning C4133: '==' : incompatible types - from 'struct _bgp_peer_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(649) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _bgp_peer_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(661) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(661) : warning C4133: '==' : incompatible types - from 'struct _prefix_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(661) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(798) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(2335) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(2335) : warning C4133: '==' : incompatible types - from 'struct _prefix_t *' to 'char *'
+C:\Documents and Settings\labovit\Desktop\mrt\src\lib\config\bgpconf.c(2335) : warning C4133: '=' : incompatible types - from 'char *' to 'struct _prefix_t *'
+Linking...
+Microsoft (R) Incremental Linker Version 6.00.8168
+Copyright (C) Microsoft Corp 1992-1998. All rights reserved.
+
+wship6.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib iphlpapi.lib /incremental:yes "/pdb:Debug/mrtd.pdb" /debug /machine:IX86 "/out:Debug/mrtd.exe" "/libpath:f:\IPv6kit/lib" "/libpath:F:\Platform SDK\Lib" "/libpath:C:\IPv6Kit\lib" 
+".\Debug\alist.obj" 
+".\Debug\array.obj" 
+".\Debug\as_alist.obj" 
+".\Debug\as_regexp.obj" 
+".\Debug\aspath.obj" 
+".\Debug\bgp_attr.obj" 
+".\Debug\bgp_dump.obj" 
+".\Debug\bgp_dump2.obj" 
+".\Debug\bgp_msg.obj" 
+".\Debug\bgp_pdu.obj" 
+".\Debug\bgp_sm.obj" 
+".\Debug\bgp_thread.obj" 
+".\Debug\bgp_timer.obj" 
+".\Debug\bgp_util.obj" 
+".\Debug\bgpconf.obj" 
+".\Debug\buffer.obj" 
+".\Debug\commconf.obj" 
+".\Debug\common.obj" 
+".\Debug\community.obj" 
+".\Debug\compat.obj" 
+".\Debug\config_file.obj" 
+".\Debug\connect.obj" 
+".\Debug\filter.obj" 
+".\Debug\gateway.obj" 
+".\Debug\hash.obj" 
+".\Debug\hashfn.obj" 
+".\Debug\io.obj" 
+".\Debug\kernel_uii.obj" 
+".\Debug\link_state.obj" 
+".\Debug\linked_list.obj" 
+".\Debug\load.obj" 
+".\Debug\lsa_database.obj" 
+".\Debug\mrt.obj" 
+".\Debug\mrtd.obj" 
+".\Debug\multiconf.obj" 
+".\Debug\New.obj" 
+".\Debug\nexthop.obj" 
+".\Debug\nt.obj" 
+".\Debug\nt_alarm.obj" 
+".\Debug\ospf_config.obj" 
+".\Debug\ospf_database.obj" 
+".\Debug\ospf_hello.obj" 
+".\Debug\ospf_interface.obj" 
+".\Debug\ospf_neighbor.obj" 
+".\Debug\ospf_netmap.obj" 
+".\Debug\ospf_packet.obj" 
+".\Debug\ospf_thread.obj" 
+".\Debug\ospf_uii.obj" 
+".\Debug\prefix.obj" 
+".\Debug\radix.obj" 
+".\Debug\reboot.obj" 
+".\Debug\rib.obj" 
+".\Debug\rib_uii.obj" 
+".\Debug\rip2.obj" 
+".\Debug\rip_proto.obj" 
+".\Debug\ripconf.obj" 
+".\Debug\ripng.obj" 
+".\Debug\route_util.obj" 
+".\Debug\rtmapconf.obj" 
+".\Debug\schedule.obj" 
+".\Debug\select.obj" 
+".\Debug\signal.obj" 
+".\Debug\socket.obj" 
+".\Debug\stack.obj" 
+".\Debug\timer.obj" 
+".\Debug\trace.obj" 
+".\Debug\user.obj" 
+".\Debug\user_old.obj" 
+".\Debug\user_util.obj" 
+".\Debug\util.obj" 
+".\Debug\vars.obj" 
+".\Debug\view.obj" 
+".\Debug\Script1.res" 
+
+
+
+<h3>Results</h3>
+mrtd.exe - 0 error(s), 32 warning(s)
+</pre>
+</body>
+</html>

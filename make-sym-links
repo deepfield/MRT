@@ -1,0 +1,77 @@
+#! /bin/sh
+
+ln="ln -s"
+
+if test $# -eq 0; then
+# set `uname |tr "[A-Z]" "[a-z]"`
+  set `uname -a | tr "[A-Z]" "[a-z]" | cut -d\  -f1,3 | \
+  sed -e 's/ //g' | sed -e 's/-release//' | sed -e 's/bsd\/os/bsdi/'`
+fi
+
+if test $# -ne 1; then
+    echo make-sym-links [system-name]
+    exit 1;
+fi
+
+name=$1
+if test ! -d src.$name; then
+    mkdir src.$name
+fi
+if test ! -f src.$name/Makefile; then
+    $ln ../src/Makefile src.$name/
+fi
+#cp -p ./src/Make.include src.$name/
+echo "NEED_CONFIGURE = yes" >src.$name/Make.include
+#$ln ../src/Make.include.in src.$name/
+if test ! -f src.$name/configure; then
+    $ln ../src/configure src.$name/
+    $ln ../src/config.guess src.$name/
+    $ln ../src/config.sub src.$name/
+    $ln ../src/install-sh src.$name/
+fi
+#$ln ../src/obj src.$name/
+
+for i in lib programs include
+do
+    if test ! -d src.$name/$i; then
+        mkdir src.$name/$i
+    fi
+    if test $i = include; then
+	for f in src/$i/*
+do
+	    ff=`basename $f`
+	    if test $ff = config.h; then continue; fi
+	    if test $ff = config.h.top; then continue; fi
+	    if test $ff = config.h.bot; then continue; fi
+	    if test -f $f -a ! -f src.$name/$i/$ff; then
+                $ln ../../$f src.$name/$i/
+	    fi
+	done
+    else
+	if test ! -f src.$name/$i/Makefile; then
+            $ln ../../src/$i/Makefile src.$name/$i
+	fi
+        if test $i = lib -a ! -f src.$name/lib/Make.include; then
+	    $ln ../../src/lib/Make.include src.$name/lib/
+	fi
+	for d in src/$i/*
+	do
+	    dd=`basename $d`
+	    if test $dd = CVS; then continue; fi;
+	    if test $dd = Makefile; then continue; fi;
+	    if test $dd = Make.include; then continue; fi;
+	    if test "`expr $dd : '.*\.\(.*\)'`" = "a"; then continue; fi;
+	    if test ! -d src.$name/$i/$dd; then
+	        mkdir src.$name/$i/$dd
+	    fi
+	    for f in $d/*
+	    do
+		ff=`basename $f`
+	        if test -f $f -a ! -f src.$name/$i/$dd/$ff; then
+                    $ln ../../../$f src.$name/$i/$dd/
+		fi
+	    done
+	    (cd src.$name/$i/$dd; rm -f *.o *.a core *.core *~*)
+	done
+    fi
+done

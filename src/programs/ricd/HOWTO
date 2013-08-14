@@ -1,0 +1,70 @@
+This describes a simple example that gives you an overlook of ricd.
+
+A sample configuration is available at src/programs/ricd/ricd.conf.
+You need to modify it to suit your network. Areas on each nodes
+must be consistent with others. Run ricd on each nodes and telnet to
+their interactive interface (called UII). In the session, basic MRT
+commands like "show config" and "config" are available in addition 
+to ricd specific commands described in Configuration.
+
+tokyo# ./ricd -v -f ./ricd.conf >/tmp/ricd.log &
+tokyo# telnet localhost 5674
+MRT version 2.1.1 Alpha [12/1/99]
+No Access Verification
+
+tokyo MRTd# show config
+#<name> <pri> <pps> <dly> <loh>
+link-qos 100m 0 7000 1000 3
+link-qos 10m 0 700 10000 4
+# <name> <pri> <mtu> <pps> <utu> <cdly> <cchg> <rdly> <rchg>
+req-qos pcm 3 128 100 30 0 1 0 0
+...<snip>
+
+tokyo MRTd# show ip hqlip neighbor
+Neighbor Address    If     Time  UP   KeepAlive  Sent/Rcvd
+198.108.60.107     ed0 00:02:58   1    12/17       65/55     (connected)
+198.108.60.162     ed0 00:02:58   0     0/0         0/0      (self)
+192.168.10.162     de0 00:02:57   0     0/0         0/0      (self)
+192.168.10.103     de0 00:00:21   1    16/17       35/25     (connected)
+127.0.0.1          lo0 00:02:48   0     0/0         0/0      (self)
+
+tokyo MRTd# show ip srsvp neighbor
+Neighbor Address    If     Time  UP R/H   Sent/Rcvd
+198.108.60.107     ed0 00:04:30   1  R      0/0      (connected)
+198.108.60.162     ed0 00:04:16   0  R      0/0      (self)
+192.168.10.162     de0 00:04:15   0  R      0/0      (self)
+192.168.10.103     de0 00:01:39   1  R      0/0      (connected)
+127.0.0.1          lo0 00:04:36   0  R      0/0      (self)
+
+tokyo MRTd# show ip hqlip areas
+...<snip>
+ AREA/TYPE    AREA ID(S)                                PARENT/FROM
+de0         1:192.168.10.0                              A21            ...
+  E LINK    0:192.168.10.162    ->  2:198.108.0.0
+  E LINK    0:192.168.10.103    ->  1:192.168.12.0      192.168.10.103 ...
+  I LINK    0:192.168.10.162    ->  0:192.168.10.103    192.168.10.103 ...
+  I LINK    0:192.168.10.103    ->  0:192.168.10.162                   ...
+  > CENTER  0:192.168.10.103                            192.168.10.103 ...
+    ADDR    0:192.168.10.162                                           ...  
+...<snip>
+
+tokyo MRTd# ip flow recv 192.168.10.103 port 5678 udp pcm
+tokyo MRTd# sh ip flows
+NO  S/R  STAT     DESTINATION PROTO DPORT          SENDER SPORT ....
+ 1 RECV READY  192.168.10.162    17  5678  192.168.10.103  5678 ....
+
+tokyo MRTd# ip flow send 192.168.10.103 port 5679 udp pcm
+tokyo MRTd# sh ip flows
+NO  S/R  STAT     DESTINATION PROTO DPORT          SENDER SPORT ....
+ 1 RECV READY  192.168.10.162    17  5678  192.168.10.103  5678
+ 2 SEND READY  192.168.10.103    17  5679  192.168.10.162  5679
+   LEAF READY  192.168.10.103
+
+tokyo MRTd# clear ip flow 1
+tokyo MRTd# sh ip flows
+NO  S/R  STAT     DESTINATION PROTO DPORT          SENDER SPORT ....
+ 1 RECV DELED  192.168.10.162    17  5678  192.168.10.103  5678
+ 2 SEND READY  192.168.10.103    17  5679  192.168.10.162  5679
+   LEAF READY  192.168.10.103
+
+tokyo MRTd# quit

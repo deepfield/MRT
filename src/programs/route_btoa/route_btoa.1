@@ -1,0 +1,37 @@
+.\Copyright (c) 1995 Merit Network, Inc.
+.\Author: Craig Labovitz (labovit@merit.edu)
+.\route_atob (Route ASCII to Binary) manual page
+.TH route_btoa 1 "January 1995"
+.UC 6
+.SH NAME
+route_btoa \- Convert binary routing messages to ASCII
+.SH SYNOPSIS
+.B route_btoa
+[-i binary_data_file] [-o ASCII_out_file] 
+
+
+.SH DESCRIPTION
+`\|\fBroute_btoa\fP\|' converts binary Merit Routing Toolkit (MRT) messages to ASCII test descriptions of the messages.
+
+.SH OPTIONS
+.TP 1i
+.B \-i 
+Name of the file containing binary MRT messages. An argument 'stdin' will read from standard input.
+.TP 1i
+.B \-o 
+Name of ASCII output file. An argument of 'stdout' will write to standard output (this is the default).
+.ft I
+(this is the default).
+.ft R
+
+.SH EXAMPLE
+> route_btoa -i binary_file > ascii_file
+
+.SH "SEE ALSO"
+route_atob(1), mrt(1), sbgp(1), bgp(1), mrt_io(3)
+
+.SH BUGS
+Lots -- this is an ALPHA release after all!
+
+.SH AUTHOR
+Craig Labovitz, Merit Network, Inc.

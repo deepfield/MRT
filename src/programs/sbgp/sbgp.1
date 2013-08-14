@@ -1,0 +1,49 @@
+.\Copyright (c) 1995 Merit Network, Inc.
+.\Author: Craig Labovitz (labovit@merit.edu)
+.\SBGP (Simple BGP) manual page
+.TH sbgp 1
+.SH NAME
+sbgp - simple BGP speaker/listner 
+.SH SYNOPSIS
+.B sbgp
+[-i data_in_file] [-o data_out_file] [-l log_file] [my AS] [peer_IP peer_AS]...
+
+
+.SH DESCRIPTION
+The `\|\fBsbgp\fP\|' program is a simple BGP protol speaker and
+listner. The program can be used to receive and/or inject BPG routing 
+information into one or more BGP peering seesions. The program
+does NOT maintain routing information or apply policy to incomming
+or outgoing routes.
+
+(\fBmy AS\fR) specifies the local AS number to be used in BGP peering sessions. If a local AS number is not specified, \fBsbgp\fR uses a random AS number greater than 6000. Multiple BGP peers may be configured by listing multiple \fBpeer_IP peer_AS\fR on the command line.
+
+.SH OPTIONS
+.TP 1i
+.B \-i 
+Name of the file containing binary MRT messages. An argument 'stdin' will read from standard input. \fI(Default is no input).\fR
+.TP 1i
+.B \-o 
+Name of output file. An argument of 'stdout' will write to standard output \fI(this is the default).\fR
+.TP 1i
+.B \-v
+write verbose tracing and error messages to stdout
+.B \-l
+name of tracing log file. By default, /tmp/bgp.log is used.
+.B \-b
+peer with the NSFNet Backbone. This feature will only exist in ALPHA versions of the software.
+
+
+.SH EXAMPLE
+> sbgp -v -o data 56 192.23.23.22 690
+
+
+.SH "SEE ALSO"
+route_atob(1), mrt(1), bgp(1), mrt_io(3)
+
+.SH BUGS
+Lots -- this is an ALPHA release after all!
+
+.SH AUTHOR
+Craig Labovitz, Merit Network, Inc.
+

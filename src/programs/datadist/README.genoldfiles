@@ -1,0 +1,43 @@
+
+To generate historic cooked files for ASExplorer, FlapGraph, and 
+FlapTableDaily from bgp data - use the genoldfiles program.
+
+----------------------------------------------------------------
+
+Making genoldfiles:
+
+% make clean
+% make -f Makefile.genoldfiles
+
+Warning: This will remove the *.o files in the datadist dir
+when its done. This is because genoldfiles compiles the *.c files
+in this dir with the -DGEN_OLD_FILES flag, and this results 
+in objects that wont work for datadistiller. So by removing *.o,
+the next build of datadistiller will be forced to make *.o thats
+correct.
+
+
+----------------------------------------------------------------
+
+Usage:
+
+% genoldfiles
+
+will dump usage.
+
+----------------------------------------------------------------
+
+config file:
+
+old.conf is the default (and example) config file for genoldfiles.
+
+This program reuses the "basedir" parameter to mean the directory
+in which to dump the output - and "database_directory" parameter
+to pick up the input. it expects the same directory structures as
+datadistiller.
+
+Two new parameters are added in.
+<module name> start_date <mm/dd/yyyy>
+<module name> end_date <mm/dd/yyyy>
+
+These specify which dates to dump for - both inclusive.

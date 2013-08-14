@@ -1,0 +1,59 @@
+
+
+!lt[a|s]	list times available in BGP database
+		a - available
+		s - set
+	        e.g. !lt
+
+		!lt
+		A22
+		885519000 885521700 
+		C
+
+!lda		list database available
+
+!ld		list current database
+
+!sa		set peer AS number
+		e.g. !sas3561
+
+!sp		set prefix
+		e.g. !sp198.108.60.0/24
+
+!so		set output
+		prefixes -- (default)
+		table -- table of ann, with, etc 
+	        e.g. !sotable
+
+!st		set time	
+		e.g. !s88888233 888232333
+
+!sd		set database 
+		e.g. !sdmae-east
+
+!s-lc		List available databases
+		e.g. !s-lc
+
+!run		Scan database listing all routes that meet search
+		criteria
+	        e.g. !run
+
+!rst		reset to default search criteria 
+		All AS and All peers and last hour
+
+!rl		Load routing table
+		e.g. !rl901907878
+
+!rd		Routing Table dump (assumes table loaded)
+		e.g. !rd
+
+!lp		List peers (assumes table loaded)
+		e.g. !lp
+
+!mr		Monitor routing table
+		e.g. !mr 88888233 998989899
+
+
+
+
+

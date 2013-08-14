@@ -1,0 +1,52 @@
+#
+# $Id: Make.include,v 1.2 2000/08/15 01:03:28 labovit Exp $
+#
+
+
+HOST_OS =	solaris2.6
+
+PROGRAM_DIRS=	SalyClient2 bgpsim datadist mrtd ricd route_atob route_btoa route_tracker sbgp sospf srip tpd 
+PROGRAMS=	SalyClient2 bgpsim datadist mrtd ricd route_atob route_btoa route_tracker sbgp sospf srip tpd 
+LIB_DIRS=	bgp_attr bgp_proto config filter io kernel mrt pim portserver radix rib rip struct timer 
+# the following a list that I currently support -- masaki
+PROGRAM_DIRS_MRT = mrtd route_atob route_btoa bgpsim sbgp
+
+EXTRA_LIBS=	
+THREADLIBS=	-lpthread
+KERNEL_OBJS=	solaris.o
+KVM_LIB=	
+DB_LIB=		-lgdbm
+DATADSTL_LIBS=  -ldb
+
+CC= 		gcc
+CFLAGS= 	-g -Wall -Wno-char-subscripts  -DHAVE_CONFIG_H  $(CPPFLAGS)
+CPPFLAGS= 	-D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -DFUNCPROTO -I../../include -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=500 -D_XOPEN_SOURCE_EXTENDED=1 -D_XOPEN_VERSION=4 -D__EXTENSIONS__ -D_VA_LIST -I/usr/local/include 
+
+LD= 		gcc
+LDFLAGS=	 -L/usr/local/lib
+RANLIB= 	ranlib
+INSTALL= 	../.././install-sh -c
+MAKEDEP= 	makedepend
+MAKEDEPCLEAN= 	rm -f .depend
+
+DESTDIR=	/usr/local/sbin
+MANDIR=		/usr/local/man
+#EXEC_PREFIX=	${prefix}
+
+MRTLIB= 	../../lib/libmrt.a
+RIBLIB= 	../../lib/librib.a
+RIPLIB= 	../../lib/librip.a
+BGPLIB= 	../../lib/libbgp.a
+PIMLIB= 	../../lib/libpim.a
+CFGLIB=		../../lib/libcfg.a
+MRT_LIBS=	$(CFGLIB) $(BGPLIB) $(RIPLIB) $(PIMLIB) $(RIBLIB) $(MRTLIB)
+SYS_LIBS=	 -lxnet /usr/ccs/lib/values-xpg4.o -lsocket -lnsl -lpthread -lresolv
+LIBS=		$(MRT_LIBS) $(EXTRA_LIBS) $(SYS_LIBS)
+
+QUANTIFY=	quantify -threads=yes -max-threads=80
+PURIFY=		purify -threads=yes -max-threads=80
+
+SHELL = 	/bin/sh
+CP =		cp -p
+RM =		rm -f
+ARFLAGS =	crv

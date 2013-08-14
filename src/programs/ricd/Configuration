@@ -1,0 +1,53 @@
+This describes configuration commands provided by ricd, in addition to
+MRT's basic commands.
+
+1. Interactive commands
+
+o show (ip|ipv6) srsvp neighbor [<if-name>] -- Shows SRSVP neighbors detected.
+o show (ip|ipv6) flows -- Shows flows created by the daemon.
+o [ip|ipv6] flow (send|recv) <dest> port <num> (udp|tcp) <req-qos> --
+        Requests the daemon to create a flow for send or receive.
+o clear (ip|ipv6) flow <num> -- Removes the flow created.
+o show (ip|ipv6) hqlip neighbor [<if-name>] -- Shows HQLIP neighbors detected.
+o show (ip|ipv6) hqlip areas -- Shows all areas created by HQLIP.
+
+2. Configuration commands
+
+o link-qos <name> <pri> <pps> <dly> [<loh>] -- Defines a link-qos.
+o no link-qos <name> -- Removes the link-qos.
+o req-qos <name> <pri> <mtu> <pps> <sec> <cd> <cf> <rdly> <rfee> --
+        Defines a request-qos.
+o no req-qos <name> -- Removes the request-qos.
+o rvp <prefix> <address> -- Defines a hint of RVP.
+o no rvp <prefix> <address> -- Removes the hint.
+
+o router ric [ipv6] -- Enables RIC routing protocols (HQLIP/SRSVP).
+o no router ric [ipv6] -- Disables RIC routing protocols (HQLIP/SRSVP).
+
+The followings are available within "router ric" mode.
+
+o network <if-name> qos <link-qos> [prefix <prefix>] --
+    Turns ON RIC routing on the interface with the qos.
+    Specifies a prefix if multiple addresses are assigned to the interface.
+o no network <if-name> -- Turns OFF RIC routing on the interface.
+o network <if-name> keep-alive <sec> -- Sets keep-alive interval to <num>.
+o no network <if-name> keep-alive --
+    Resets keep-alive interval to default (10 seconds).
+
+o network <if-name> metric <num> -- Sets interface metric to <num>.
+o no network <if-name> metric -- Resets interface metric to default (1).
+
+o network <if-name> center <pri> <pps> level <level> --
+    Makes the area at the <level> a center candidate.
+o no network <if-name> center -- Withdraws from a center candidate.
+
+o area <name> level <level> id <id> -- Defines an area at the level with id.
+o no area <name> level <level> -- Undefines the area.
+o area <name> aggregate <prefix> -- Specifies which sub areas are included.
+o no area <name> aggregate <prefix> -- Excludes the sub areas.
+o area <name> aggregate <if-name> masklen <len> -- Specifies sub areas with
+    their if-name. Masklen <len> will be applied to form the prefix..
+o no area <name> aggregate <if-name> -- Excludes the sub areas.
+o area <name> center <pri> <pps> -- Makes the area a center candidate.
+o no area <name> center -- Withdraws from a center candidate.
+

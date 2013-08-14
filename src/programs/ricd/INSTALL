@@ -1,0 +1,26 @@
+This software works with MRT and requires a kernel support for QOS routing
+developed in RIC. However, without the kernel support, it is possible to
+see how the protocol works.
+
+Platforms: 
+
+o FreeBSD 2.8.8 with kernel support (IPV6)
+o FreeBSD and NetBSD without kernel support (IPV4/V6)
+o Solaris without kernel support and pthreads (IPV4/V6) (*)
+  (*) need to run "configure --disable-thread")
+
+Installation Steps:
+
+ftp ftp://ftp.merit.edu/net-research/mrt/mrt-2.1.2a-src.tar.gz
+gunzip <mrt-2.1.2a-src.tar.gz | tar xvf -
+cd mrt-2.1.2a
+ftp ftp://ftp.merit.edu/net-research/mrt/ricd-1.0.0a-src.tar.gz
+gunzip <ricd-1.0.0a-src.tar.gz | tar xvf -
+cd src
+make
+cd programs/ricd
+vi ./ricd.conf
+./ricd -v -f ./ricd.conf >& /tmp/ricd.out &
+telnet localhost 5674
+
+More general information about MRT is available at http://www.merit.edu/~mrt.

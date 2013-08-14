@@ -1,0 +1,22 @@
+This development was done under the contract with Real Internet
+Consortium (RIC) through Hitachi, Ltd., Japan.  
+
+There was another HQLIP/SRSVP implementation developed by Prof. 
+Fujikawa, Kyoto University, Japan. It helped me to understand 
+the protocols.  
+
+Also, there was a reference code to the QOS kernel developed by 
+Prof. Matsuko, Hiroshima University, Japan. The work was quite 
+excellent. 
+
+Prof. Ohta, Tokyo Inst. of Tech., Japan, gave me advice. 
+
+The protocols, HQLIP and SRSVP were developed by Prof. Ohta, 
+Prof. Fujikawa, and Prof. Goto, Kyushu University, Japan with 
+contributions from RIC members.
+
+This development was led and managed by Prof. Jahanian, EECS, 
+University of Michigan.
+
+Masaki Hirabaru
+Merit Network, Inc.

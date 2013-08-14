@@ -1,0 +1,10 @@
+This software is an implementaion of the scalable QOS routing protocol 
+developed in the Real Internet Consortium (RIC). The information is 
+available through http://www.real-internet.org. The routing daemon (ricd) 
+works on the top of MRT (Multi-threaded Routing Toolkit) developed at 
+Merit Network, Inc, which is available at http://www.merit.edu/~mrt.  
+A kernel support for QOS routing this release works with would be 
+available through RIC.
+
+Masaki Hirabaru
+Merit Network, Inc.

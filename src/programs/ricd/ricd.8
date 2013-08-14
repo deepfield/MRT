@@ -1,0 +1,25 @@
+.\"$Id: ricd.8,v 1.1.1.1 2000/08/14 18:46:14 labovit Exp $
+.\"Copyright (c) 1999 Merit Network, Inc.
+.\"Author: Masaki Hirabaru <masaki@merit.edu>
+.\"MRT Program Manual Page
+.TH ricd 8
+.SH NAME
+ricd - RIC QOS Routing (HQLIP/SRSVP) Daemon 
+.SH SYNOPSIS
+ricd [-f config_file] [-p uii_port ] [-v] [-n]
+.SH DESCRIPTION
+ricd is an implementation of HQLIP/SRSVP routing protocols and works 
+on the top of MRT.  You can connect ricd by using telnet and examine 
+its status like other MRT tools.
+.PP
+The command-line options are:
+.IP -f
+Use an alternate config file. By default, ricd uses /etc/ricd.conf .
+.IP -p
+Use alternate uii port number instead of 5674 or "ricd" in /etc/services.
+.IP -v
+Indicates that all debug options will be on.
+.IP -n
+Specifies that ricd will not go into daemon mode.
+.SH AUTHORS
+Masaki Hirabaru, Merit Network, Inc.

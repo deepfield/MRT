@@ -1,0 +1,15 @@
+all:	$(OBJS)
+
+.c.o:
+#	@echo "Compiling:       $*.c"
+	$(CC) -c $(CFLAGS) $*.c
+	@if [ "$(ARCHIVE)" ]; then \
+		$(AR) $(ARFLAGS) $(ARCHIVE) $@; \
+		$(RANLIB) $(ARCHIVE); fi
+clean:
+	$(RM) *.o *.a core *.core *~*
+
+depend:
+	@for i in $(OBJS); do \
+	    $(MAKEDEP) $(CFLAGS) `basename $$i .o`.c; \
+	done
